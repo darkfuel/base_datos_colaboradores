@@ -1,10 +1,10 @@
 import Table from 'react-bootstrap/Table'
 import { BaseColaboradores } from '../assets/js/BaseColaboradores'
 import { useState } from 'react'
-// import Formulario from './Formulario'
 
-function Listado () {
-  const [colaboradores, setColaboradores] = useState(BaseColaboradores)
+function Listado ({ formData }) {
+  // const [colaboradores, setColaboradores] = useState(BaseColaboradores)
+  console.log(formData, 'listado')
   return (
     <Table striped responsive>
       <thead>
@@ -17,7 +17,7 @@ function Listado () {
         </tr>
       </thead>
       <tbody>
-        {colaboradores.map((item) => (
+        {/* {colaboradores.map((item) => (
           <tr key={item.id}>
             <td>{item.nombre}</td>
             <td>{item.edad}</td>
@@ -25,7 +25,7 @@ function Listado () {
             <td>{item.telefono}</td>
             <td>{item.cargo}</td>
           </tr>
-        ))}
+        ))} */}
       </tbody>
     </Table>
   )

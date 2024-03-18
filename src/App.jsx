@@ -11,6 +11,13 @@ function App () {
   const [error, setError] = useState(false)
   const [msg, setMsg] = useState(false)
   const [status, setStatus] = useState(false)
+  const [formData, setFormData] = useState({
+    nombre: '',
+    edad: '',
+    correo: '',
+    telefono: '',
+    cargo: ''
+  })
   return (
     <>
       <Container>
@@ -19,8 +26,8 @@ function App () {
         </Row>
         <Col sm={3}><Buscador /></Col>
         <Row>
-          <Col sm={9}><Listado /></Col>
-          <Col sm={3}><Formulario setError={setError} setMsg={setMsg} setStatus={setStatus} /></Col>
+          <Col sm={9}><Listado formData={formData} /></Col>
+          <Col sm={3}><Formulario formData={formData} setFormData={setFormData} setError={setError} setMsg={setMsg} setStatus={setStatus} /></Col>
           {error ? <MyAlert status={status} texto={msg} /> : null}
         </Row>
       </Container>
