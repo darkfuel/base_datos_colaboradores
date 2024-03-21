@@ -1,10 +1,13 @@
 import Table from 'react-bootstrap/Table'
-import { BaseColaboradores } from '../assets/js/BaseColaboradores'
-import { useState } from 'react'
+//filtra validando el valor de input 
+let results = ({ formData, inputBusqueda }) => {
+  if (!inputBusqueda) {
+    results = formData
+  } else {
+    results = formData.filter((dato) =>
+      dato.nombre.toLowerCase().includes(inputBusqueda.toLowerCase()))
+  }
 
-function Listado ({ formData }) {
-  // const [colaboradores, setColaboradores] = useState(BaseColaboradores)
-  console.log(formData, 'listado')
   return (
     <Table striped responsive>
       <thead>
@@ -17,7 +20,7 @@ function Listado ({ formData }) {
         </tr>
       </thead>
       <tbody>
-        {/* {colaboradores.map((item) => (
+        {results && results.map((item) => (
           <tr key={item.id}>
             <td>{item.nombre}</td>
             <td>{item.edad}</td>
@@ -25,10 +28,11 @@ function Listado ({ formData }) {
             <td>{item.telefono}</td>
             <td>{item.cargo}</td>
           </tr>
-        ))} */}
+        ))}
+
       </tbody>
     </Table>
   )
 }
 
-export default Listado
+export default results

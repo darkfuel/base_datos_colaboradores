@@ -1,16 +1,11 @@
+// import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
-// import uuid from 'react-uuid'
+import uuid from 'react-uuid'
 
-const Formulario = ({ formData, setFormData, setError, setMsg, setStatus }) => {
-  console.log('data formulario', formData)
-  // const getData = (name) => {
-  //   return (e) => {
-  //     setFormData({ ...formData, [name]: e.target.value })
-  //   }
-  // }
+const Formulario = ({ propsFormulario }) => {
+  const { colaboradores, setColaboradores, formData, setFormData, setError, setMsg, setStatus } = propsFormulario
   const validNull = (e) => {
     e.preventDefault()
-    // setFormData({ id: uuid() })
     // validacion de espacios en blanco
     if (formData.nombre === '' || formData.edad === '' || formData.correo === '' || formData.telefono === '' || formData.cargo === '') {
       setError(true)
@@ -22,6 +17,7 @@ const Formulario = ({ formData, setFormData, setError, setMsg, setStatus }) => {
       setError(true)
       setMsg('Registro completo')
       setStatus('success')
+      setColaboradores([...colaboradores, formData])
       setFormData({
         nombre: '',
         edad: '',
@@ -41,7 +37,7 @@ const Formulario = ({ formData, setFormData, setError, setMsg, setStatus }) => {
           type='text'
           placeholder='Nombre del colaborador'
           value={formData.nombre}
-          onChange={e => setFormData({ ...formData, nombre: e.target.value })}
+          onChange={e => setFormData({ ...formData, id: uuid(), nombre: e.target.value })}
         />
         <Form.Control
           type='number'
